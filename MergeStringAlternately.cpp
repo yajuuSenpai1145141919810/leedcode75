@@ -11,6 +11,12 @@
 // word2:    p   q   r
 // merged: a p b q c r
 
+// 另一種寫法:兩個長度不一的合併以長度最大者為準，中間加 if 檢查!
+// for (int i = 0; i < max(n1, n2); i++) {
+//          if (i < n1) result += word1[i]; // 如果 word1 還有字就加
+//          if (i < n2) result += word2[i]; // 如果 word2 還有字就加
+// }
+
 class Solution {
 public:
     string mergeAlternately(string word1, string word2) {
