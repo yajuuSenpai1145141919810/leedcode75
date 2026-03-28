@@ -4,3 +4,36 @@
 
 // Input: s = "abc", t = "ahbgdc"
 // Output: true
+
+// 他這個子字串不一定要連續 因此想到用雙指標
+
+class Solution {
+public:
+    bool isSubsequence(string s, string t) {
+        int n=s.length();// n=3
+        int m=t.length();// m=6;
+
+        int p1=0;
+        int p2=0;
+      
+        // 這是重點!!!!!!空字串s可以是t的子字串 但是t不可以是!!!!
+        if(n==0) return true;
+        if(n!=0&&m==0) return false;
+
+        while(1){
+            if(s[p1]==t[p2]){
+                p1++;
+                p2++;
+                if(p1==n){
+                    return true;
+                }
+            }else{
+                p2++;
+            }
+            if(p2==m){
+                return false;
+            }
+        }
+        return false;
+    }
+};
