@@ -63,6 +63,36 @@ while (left < right) {
     }
 }
 
+第三種寫法:
+class Solution {
+public:
+    string reverseVowels(string s) {
+
+        string result;
+        
+        int left=0;
+        int right=s.length()-1;
+
+        string temp="aeiouAEIOU";
+
+        while(left<right){
+            while(temp.find(s[left])==string::npos&&left<right){
+                left++;
+            }
+            while(temp.find(s[right])==string::npos&&left<right){
+                right--;
+            }
+            if(left<right){
+                swap(s[left],s[right]);
+                left++;
+                right--;
+
+            }   
+        }
+        return s;
+    }
+};
+
 
 
  
