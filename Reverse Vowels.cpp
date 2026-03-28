@@ -1,4 +1,4 @@
-// 345. Reverse Vowels of a String
+// 345. Reverse Vowels of a String(三種寫法)
 // Given a string s, reverse only all the vowels in the string and return it.
 // The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both lower and upper cases, more than once.
 
@@ -43,6 +43,26 @@ public:
         return s;
     }
 };
+
+
+// 另一種寫法:
+while (left < right) {
+    if (!isVowel(s[left])) {
+        // 左邊不是母音，往右走一步，結束這回合（進入下一次外層 while）
+        left++;
+    } 
+    else if (!isVowel(s[right])) {
+        // 左邊是母音了，但右邊不是，右邊往左走一步
+        right--;
+    } 
+    else {
+        // 走到這裡，代表 left 和 right 兩邊「剛好」都是母音
+        swap(s[left], s[right]);
+        left++;
+        right--;
+    }
+}
+
 
 
  
