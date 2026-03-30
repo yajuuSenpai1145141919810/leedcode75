@@ -9,8 +9,14 @@ public:
 
         // 每一圈（每一個節點）就地反轉 不是做到底才一次轉!
         while(current!=nullptr){
-            ListNode* temp=current->next; // 先複製一份原本的箭頭
+
+            // 順著 current 找到節點，把裡面的 next 地址給 temp。先複製一份原本的箭頭
+            ListNode* temp=current->next; 
+            
+            // 順著 current 找到節點，強行修改節點裡面的 next。 動到結構了!
             current->next=prev;// 反轉箭頭
+            
+            // 把 current 存的地址複製給 prev。
             prev=current; // prev移動到下一個
             current=temp;// current移動到下一個
 
