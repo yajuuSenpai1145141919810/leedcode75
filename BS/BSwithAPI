@@ -1,0 +1,45 @@
+// 374. Guess Number Higher or Lower
+// I pick a number from 1 to n. You have to guess which number I picked (the number I picked stays the same throughout the game).
+// Every time you guess wrong, I will tell you whether the number I picked is higher or lower than your guess.
+// You call a pre-defined API int guess(int num), which returns three possible results:
+// -1: Your guess is higher than the number I picked (i.e. num > pick).
+// 1: Your guess is lower than the number I picked (i.e. num < pick).
+// 0: your guess is equal to the number I picked (i.e. num == pick).
+// Return the number that I picked.
+
+// 人話就是    
+// 你丟球（呼叫 API）：你把猜的數字 mid 丟進 guess(mid)。
+// 它給回應（API 回傳值）：它會回傳 -1、1 或 0 來告訴你「太大」、「太小」或「中了」。
+// 你調整範圍：根據那個 -1, 1, 0，你去移動 left 或 right，而不是直接 return 它們。
+
+/** 
+ * Forward declaration of guess API.
+ * @param  num   your guess
+ * @return 	     -1 if num is higher than the picked number
+ *			      1 if num is lower than the picked number
+ *               otherwise return 0
+ * int guess(int num);
+ */
+
+class Solution {
+public:
+    int guessNumber(int n) {
+
+    int left=1;
+    int right=n;
+    while(left<=right){
+        // 注意這邊的寫法 防止溢位
+        int mid = left + (right - left) / 2;
+        int gus=guess(mid);
+        if(gus==0){
+            return mid; // mid是我猜的數字 所以猜中要回傳數字
+        }
+        else if(gus==1){
+            left= mid+1; 
+        }else {
+            right= mid-1;
+        }
+    }
+    return left;// 也可以寫-1
+}
+};
