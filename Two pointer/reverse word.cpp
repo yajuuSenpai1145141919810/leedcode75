@@ -20,6 +20,11 @@ public:
     }
 };
 
+// 都可以用下面的移除辦法
+// In-place (原地)
+// Reverse words / characters (反轉單字或字元)
+// Rotate array / string (旋轉陣列或字串)
+// Remove duplicates / specific elements (移除重複或特定元素)
 
 // 標準寫法
 class Solution {
